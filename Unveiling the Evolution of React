@@ -1,0 +1,10 @@
+React History
+I trust this article has been illuminating. Should you have any feedback, please do not hesitate to reach out. Here’s to elevating what is React and its History.
+React is an open-source frontend JavaScript library that is used for building composable user interfaces, especially for single-page applications. It is employed in handling the view layer for web applications development.
+React is a cross-platform and language-independent application programming interface that connects web pages to scripts or programming languages, making it possible for web developers to modify web pages with scripting languages such as JavaScript.
+The history behind React’s evolution
+React was created by Jordan Walke, a software engineer working for Facebook. React was first deployed on Facebook’s News Feed in 2011 and on Instagram in 2012.
+The history of ReactJS started in 2010 with the creation of XHP. XHP is a PHP extension that improved the syntax of the language, making XML document fragments valid PHP expressions. Its primary purpose was to create custom and reusable HTML elements.
+The main principle of this extension was to make front-end code easier to understand and to help avoid cross-site scripting attacks. The project was successful in preventing malicious content submitted by the scrubbing user.
+However, there was a different problem with XHP in which dynamic web applications required many roundtrips to the server, and XHP did not solve this problem. Also, the whole UI was re-rendered for small changes in the application. Later, the initial prototype of React was created with the name FaxJ by Jordan, inspired by XHP. Finally, after some time, React was introduced as a new library into the JavaScript world.
+JSX comes from the idea of XHP
