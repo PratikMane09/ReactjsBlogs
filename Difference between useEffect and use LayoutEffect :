@@ -1,0 +1,75 @@
+blog link :https://medium.com/@Pratik_Mane_9/difference-between-useeffect-and-use-layouteffect-11c3aa9a319f
+
+
+In this article we are going to cover what both useEffect and useLayoutEffect do, why they are different and when you should use each one. Firstly, both useEffect and useLayoutEffect are hooks provided by React to perform side effects in functional components. They execute after the component renders, enabling you to perform tasks like data fetching, state updates, or manually interacting with the DOM.
+
+The Basics: useEffect and useLayoutEffect
+useEffect : useEffect is the more commonly used hook. It schedules the provided callback to run after the browser has painted, ensuring it doesn’t block the browser from updating the screen. This makes it ideal for asynchronous tasks such as data fetching, setting up event listeners, or performing cleanup.
+
+
+useEffect
+useLayoutEffect : On the other hand, useLayoutEffect behaves similarly to useEffect, but it fires synchronously after all DOM mutations. This makes it perfect for tasks that require measuring the layout of the DOM or synchronously interacting with the DOM.
+
+In useLayoutEffect, the callback function runs synchronously before the screen is updated.
+
+
+useLayoutEffect
+Key Differences
+Now, let’s talk about the differences between these two hooks.
+
+1.Execution Order
+useLayoutEffect doesn’t wait for DOM to paint the screen and gets fired right away. This sure affects the order of execution.
+
+In a useEffect hook,
+
+useEffect(() => {
+console.log("This is a useEffect : 1");
+},[])
+useEffect(() => {
+console.log("This is a useEffect : 2");
+},[])
+The code prints:
+
+This is a useEffect : 1
+This is a useEffect : 2
+This is an expected behaviour while working with useEffect. It executes in the order in which they were mentioned.
+
+Now, let’s replace the second hook with a useLayoutEffect :
+
+useEffect(() => {
+console.log("This is a useEffect");
+},[])
+useLayoutEffect(() => {
+console.log("This is a useLayoutEffect");
+},[])
+The code prints:
+
+This is a useLayoutEffect
+This is a useEffect
+As expected, the useLayouEffect doesn’t care for DOM mutation hence gets executed even before the useEffect hook.
+
+2. Performance Considerations
+useEffect: Generally has better performance due to its asynchronous nature, preventing jank or UI stuttering.
+useLayoutEffect : Can potentially block the browser rendering if not used carefully, leading to perceived performance issues.
+3. Visual Inconsistencies
+In complex user interaction which involves animations, it is possibly better to use useLayoutEffect instead of useEffect especially if you’re dealing with ref.
+
+React.useLayoutEffect(() => { 
+ console.log(ref.current)
+})
+In the above example, useLayoutEffect ensures to wait, updates its value then move on to the other piece of code. This might improve the animation flickering which usually happens with the useEffect hook.
+
+This represents a tradeoff between running a costly hook and maintaining smooth animation. Nevertheless, React is sufficiently swift to optimize for minor use cases, ensuring negligible disruption between the two.
+
+When to Use Each :
+You should always start by using useEffect, and most of the time you will be able to just leave it there.
+
+If you are making a DOM mutation and there is an issue with useEffect, for example, the UI quickly changes from one thing to another, where useEffect loads in after visual changes, only then should you consider switching to useLayoutEffect.
+
+Here’s a simplified way to remember the differences between useLayoutEffect and useEffect:
+
+useEffect : Executes after DOM mutations, after visual changes, and after the browser has painted, ensuring users don’t have to wait for your code.
+
+useLayoutEffect : Executes after DOM mutations but before visual changes and before browser painting, causing users to wait for your code.
+
+I hope you found this post helpful! Please consider following and sharing it with others. Feel free to let me know if there are any areas I can improve. Have a good day.
